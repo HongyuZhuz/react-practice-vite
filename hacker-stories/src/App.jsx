@@ -28,22 +28,25 @@ const App=()=>{
       <label htmlFor="search">Search:</label>
       <input id="search" type = "text"/>
       <hr/>
-      <ul>
-        {list.map((item)=>{
-          return(
-          <li key = {item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span><br/>
-            <span>{item.author}</span><br/>
-            <span>{item.num_comments}</span><br/>
-            <span>{item.points}</span>
-          </li>
-          ); }
-        )}
-      </ul>
+      <List />
     </div>
   );
+}
+
+const List=()=>{
+  return (
+    <ul>
+      {list.map((item)=>
+      <li key = {item.objectID}>
+        <span >
+          <a href={item.url}>{item.title}</a>
+        </span><br/>
+        <span>{item.author}</span><br/>
+        <span>{item.num_comments}</span><br/>
+        <span>{item.points}</span><br/>
+      </li>)}
+    </ul>
+  )
 }
 
 export default App;
