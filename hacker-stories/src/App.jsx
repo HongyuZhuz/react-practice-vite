@@ -48,12 +48,7 @@ const List=({list})=>{
     <ul>
       {list.map((item)=>
       <Item 
-        key = {item.objectID} 
-        title = {item.title}
-        url = {item.url}
-        author = {item.author}
-        num_comments={item.num_comments}
-        points={item.points}
+        {...item}
         />
       )}
     </ul>
@@ -61,9 +56,9 @@ const List=({list})=>{
 }
 
 // eslint-disable-next-line react/prop-types
-const Item = ({key,title,url,author,num_comments,points})=>{
+const Item = ({title,url,author,num_comments,points})=>{
   return(
-    <li key = {key}>
+    <li >
       <span >
           <a href={url}>{title}</a>
       </span><br/>
