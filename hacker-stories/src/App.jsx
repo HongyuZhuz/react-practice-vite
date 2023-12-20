@@ -54,15 +54,15 @@ const List=({list})=>{
 }
 
 // eslint-disable-next-line react/prop-types
-const Item = ({key,item})=>{
+const Item = ({key,item:{title,url,author,num_comments,points,},})=>{
   return(
     <li key = {key}>
       <span >
-          <a href={item.url}>{item.title}</a>
+          <a href={url}>{title}</a>
       </span><br/>
-      <span>{item.author}</span><br/>
-      <span>{item.num_comments}</span><br/>
-      <span>{item.points}</span><br/>
+      <span>{author}</span><br/>
+      <span>{num_comments}</span><br/>
+      <span>{points}</span><br/>
     </li>
   )
 }
