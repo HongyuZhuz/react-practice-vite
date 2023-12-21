@@ -2,31 +2,38 @@ import * as React from 'react';
 
 const title = 'React';
 
+const stories = [
+  {
+    title:'React',
+    url:'https://reactjs.org/',
+    author:'Jordan Walke',
+    num_comments:3,
+    points:4,
+    objectID:0,
+  },
+  {
+    title:'Redux',
+    url:'https://redux.js.org/',
+    author:'Dan Abramov, Andrew Clark',
+    num_comments:2,
+    points:5,
+    objectID:1,
+  }
+];
+
 
 
 const App=()=>{
-  const [searchTerm,setSearchTerm] = React.useState('');
+  const [searchTerm,setSearchTerm] = React.useState(
+    localStorage.getItem('search')||''
+  );
 
-  const stories = [
-    {
-      title:'React',
-      url:'https://reactjs.org/',
-      author:'Jordan Walke',
-      num_comments:3,
-      points:4,
-      objectID:0,
-    },
-    {
-      title:'Redux',
-      url:'https://redux.js.org/',
-      author:'Dan Abramov, Andrew Clark',
-      num_comments:2,
-      points:5,
-      objectID:1,
-    }
-  ];
+  React.useEffect(()=>{
+    localStorage.setItem('search',searchTerm);
+  },[searchTerm]);
+  
   const handleSearch = (event)=>{
-    setSearchTerm(event.target.value)
+    setSearchTerm(event.target.value);
     console.log(searchTerm);
   }
   const searchedStories = stories.filter((story)=>(
