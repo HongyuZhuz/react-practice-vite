@@ -21,12 +21,22 @@ const stories = [
   }
 ];
 
+const useStorageState = (initialState)=>{
+  const [searchTerm,setSearchTerm]=React.useState(
+    localStorage.getItem('search')|| initialState
+  );
+
+  React.useEffect(()=>{
+    localStorage.setItem('search',searchTerm);
+  },[searchTerm]);
+
+  return [searchTerm,setSearchTerm];
+};
+
 
 
 const App=()=>{
-  const [searchTerm,setSearchTerm] = React.useState(
-    localStorage.getItem('search')||''
-  );
+  const [searchTerm,setSearchTerm] = useStorageState('React');
 
   React.useEffect(()=>{
     localStorage.setItem('search',searchTerm);
