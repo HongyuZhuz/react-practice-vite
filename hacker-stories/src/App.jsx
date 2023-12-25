@@ -49,7 +49,12 @@ const App=()=>{
   return(
     <div>
       <h1 className="text-3xl font-bold underline">My Hacker Stories</h1>
-      <Search onSearch = {handleSearch} searchTerm = {searchTerm}/>
+      <InputWithLabel 
+        id = 'search'
+        label = "Search"
+        value = {searchTerm}
+        onInputChange = {handleSearch}
+      />
       <hr/>
       <List list = {searchedStories}/>
     </div>
@@ -83,17 +88,14 @@ const Item = ({key,title,url,author,num_comments,points})=>{
   )
 }
 
-const Search = ({onSearch,searchTerm})=>{
 
-  const handleChange = (event)=>{
-    onSearch(event);
-  }
-  return(
-      <>
-        <label htmlFor="search" className='text-gray-700 font-bold mb-2'>Search:</label>
-        <input id="search" type = "text" value={searchTerm} onChange={handleChange} className = "shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"/>
-      </>
-  )
-}
+
+const InputWithLabel = ({id, label, value,onInputChange,type = 'text'}) =>(
+  <>
+  <label htmlFor = {id} className='text-gray-700 font-bold mb-2'> {label}</label>
+  &nbsp;
+  <input id = {id} type = {type} value = {value} onChange = {onInputChange}/>
+  </>
+)
 
 export default App;
