@@ -89,10 +89,10 @@ const Search = ({onSearch,searchTerm})=>{
     onSearch(event);
   }
   return(
-      <div>
+      <>
         <label htmlFor="search" className='text-gray-700 font-bold mb-2'>Search:</label>
         <input id="search" type = "text" value={searchTerm} onChange={handleChange} className = "shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"/>
-      </div>
+      </>
   )
 }
 
